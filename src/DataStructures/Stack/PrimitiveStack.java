@@ -1,14 +1,14 @@
-package DataStructures;
+package DataStructures.Stack;
 
-public class Stack {
+public class PrimitiveStack {
     private final int[] items;
     private int peack = -1;
 
-    Stack() {
+    public PrimitiveStack() {
         items = new int[10];
     }
 
-    Stack(int size) {
+    public PrimitiveStack(int size) {
         items = new int[size];
     }
 
