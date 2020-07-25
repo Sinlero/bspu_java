@@ -2,17 +2,17 @@ package Test;
 
 import Task3.ArrayListOfStrings;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        ArrayListOfStrings array = new ArrayListOfStrings(6);
-        array.addElem("hello");
-        for (int i = 0; i < array.getSize(); i++) {
-            System.out.println(array.getElem(i));
+    public static void main(String[] args) {
+        ArrayListOfStrings arrayListOfStrings = new ArrayListOfStrings(2);
+        arrayListOfStrings.addElem("Hello");
+        arrayListOfStrings.addElem("Hello");
+        arrayListOfStrings.addElem("Hello");
+        for (int i = 0; i < arrayListOfStrings.getSize(); i++) {
+            System.out.println(arrayListOfStrings.getElem(i));
         }
     }
 }
