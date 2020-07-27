@@ -1,6 +1,19 @@
 package Task3;
 
 public class ArrayListOfStrings {
+
+    private static class Item {
+        private String value;
+
+        Item(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return this.value;
+        }
+    }
+
     private Item[] items;
     private int index = 0;
 
@@ -31,18 +44,5 @@ public class ArrayListOfStrings {
 
     public int getSize() {
         return index;
-    }
-
-
-    private static class Item {
-        private String value;
-
-        Item(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return this.value;
-        }
     }
 }
