@@ -64,6 +64,17 @@ public class LinkedList implements Iterable {
         }
     }
 
+    public String get(int index) {
+        if (index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        ListItem item = first;
+        for (int i = 0; i < index; i++) {
+            item = item.getNext();
+        }
+        return item.getValue();
+    }
+
     public int getSize() {
         return this.size;
     }

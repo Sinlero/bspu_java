@@ -12,5 +12,8 @@ public class Main {
         list.addFirst("Hey you!");
         list.addLast("Motherfucker");
         list.showData();
+        System.out.println(list.get(3));
+        System.out.println(list.getSize());
+        System.out.println(list.get(4));
     }
 }
