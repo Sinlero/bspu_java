@@ -37,8 +37,8 @@ public class LinkedList implements Iterable {
     private int size = 0;
 
     public void addFirst(String value) {
-        if(this.isEmpty()) {
-            first = last = new ListItem(value,null);
+        if (this.isEmpty()) {
+            initList(value);
         } else {
             ListItem item = new ListItem(value, first);
             first = item;
@@ -47,59 +47,59 @@ public class LinkedList implements Iterable {
     }
 
     public void addLast(String value) {
-        if(this.isEmpty()) {
-            first = last = new ListItem(value, null);
+        if (this.isEmpty()) {
+            initList(value);
         } else {
-            last.setNext(new ListItem(value,null));
+            last.setNext(new ListItem(value, null));
             last = last.getNext();
         }
         size++;
     }
 
+    private void initList(String value) {
+        first = last = new ListItem(value, null);
+    }
+
     public String removeFirst() {
         if (!this.isEmpty()) {
-            ListItem removable = first.getNext();
-            first = removable;
+            String removableValue = first.getValue();
+            ListItem current = first.getNext();
+            first = current;
+            if (size <= 1) {
+                last = null;
+            }
             size--;
-            return removable.getValue();
+            return removableValue;
         } else {
             return "";
         }
     }
 
-    @Deprecated
     public String removeLast() {
         if (!this.isEmpty()) {
+            String removableValue = last.getValue();
             ListItem current;
-            for (int i = 0; i < size - 1; i++) {
-//                current =
+            if (size <= 1) {
+                last = null;
+            } else {
+                current = getItem(size - 2);
+                current.setNext(null);
+                last = current;
             }
-            return "";
-        } else {
-            return "";
+            size--;
+            return removableValue;
         }
+        return "";
     }
 
-    public void showData() {
-        ListItem item = first;
-        for (int i = 0; i < size; i++) {
-            System.out.println(item.getValue());
-            item = item.getNext();
-        }
-    }
 
     public String get(int index) {
-        try {
-            checkOutOfBounds(index);
-            ListItem item = first;
-            for (int i = 0; i < index; i++) {
-                item = item.getNext();
-            }
-            return item.getValue();
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Выход за границы");
-            return "";
+        checkOutOfBounds(index);
+        ListItem item = first;
+        for (int i = 0; i < index; i++) {
+            item = item.getNext();
         }
+        return item.getValue();
     }
 
     private ListItem getItem(int index) {
@@ -111,10 +111,9 @@ public class LinkedList implements Iterable {
         return current;
     }
 
-    @Deprecated
-    private void checkOutOfBounds(int index){
+    private void checkOutOfBounds(int index) {
         if (index >= size)
-            new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException();
     }
 
     public int getSize() {
@@ -138,5 +137,13 @@ public class LinkedList implements Iterable {
     @Override
     public Spliterator spliterator() {
         return null;
+    }
+
+    public void showData() {
+        ListItem item = first;
+        for (int i = 0; i < size; i++) {
+            System.out.println(item.getValue());
+            item = item.getNext();
+        }
     }
 }
