@@ -1,8 +1,6 @@
 package DataStructures.List;
 
 import java.util.Iterator;
-import java.util.Spliterator;
-import java.util.function.Consumer;
 
 public class LinkedList implements Iterable {
 
@@ -126,17 +124,7 @@ public class LinkedList implements Iterable {
 
     @Override
     public Iterator iterator() {
-        return null;
-    }
-
-    @Override
-    public void forEach(Consumer action) {
-
-    }
-
-    @Override
-    public Spliterator spliterator() {
-        return null;
+        return new ListIterator(first);
     }
 
     public void showData() {
@@ -144,6 +132,27 @@ public class LinkedList implements Iterable {
         for (int i = 0; i < size; i++) {
             System.out.println(item.getValue());
             item = item.getNext();
+        }
+    }
+
+    private class ListIterator implements Iterator {
+
+        private ListItem current = null;
+
+        public ListIterator(ListItem item) {
+            this.current = item;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public String next() {
+            String value = current.getValue();
+            current = current.getNext();
+            return value;
         }
     }
 }
