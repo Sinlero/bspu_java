@@ -43,6 +43,6 @@ public class ArrayListOfStrings {
     }
 
     public int getSize() {
-        return index;
+        return items.length;
     }
 }
