@@ -1,6 +1,8 @@
 package Test.Treads;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class TreadMainTest {
     public static void main(String[] args) {
@@ -25,11 +27,11 @@ public class TreadMainTest {
 
 
 //        for (int i = 0; i < 2; i++) {
-//            System.out.println(Factorial.calculate(5000));   6800 milliseconds
+//            Factorial.calculate(5000);   //6800 milliseconds  8200 milliseconds with format
 //        }
 
-        MathTread thread1 = new MathTread("FirstFactorial", 500);    //   58 milliseconds
-        MathTread thread2 = new MathTread("SecondFactorial", 500);   //
+        MathTread thread1 = new MathTread("FirstFactorial", 5000);    //   3825 milliseconds
+        MathTread thread2 = new MathTread("SecondFactorial", 5000);   //   4985 milliseconds with format numbers
         try {
             thread1.getThread().join();
             thread2.getThread().join();
@@ -40,5 +42,6 @@ public class TreadMainTest {
         System.out.println("********");
         System.out.println(System.currentTimeMillis() - time);
         System.out.println("********");
+
     }
 }

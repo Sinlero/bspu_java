@@ -18,6 +18,6 @@ public class MathTread implements Runnable {
 
     @Override
     public void run() {
-        System.out.println(Factorial.calculate(value));
+        Factorial.calculate(value);
     }
 }
