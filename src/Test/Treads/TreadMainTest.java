@@ -30,14 +30,31 @@ public class TreadMainTest {
 //            Factorial.calculate(5000);   //6800 milliseconds  8200 milliseconds with format
 //        }
 
-        MathTread thread1 = new MathTread("FirstFactorial", 5000);    //   3825 milliseconds
-        MathTread thread2 = new MathTread("SecondFactorial", 5000);   //   4985 milliseconds with format numbers
+      //  MathTread thread1 = new MathTread("FirstFactorial", 5000);    //   3825 milliseconds
+       // MathTread thread2 = new MathTread("SecondFactorial", 5000);   //   4985 milliseconds with format numbers
+//        try {
+//            thread1.getThread().join();
+//            thread2.getThread().join();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
+
+
+        MathTread[] threads = new MathTread[10];
+        for (int i = 0; i < threads.length; i++) {
+            threads[i] = new MathTread("iter",500);
+        }
         try {
-            thread1.getThread().join();
-            thread2.getThread().join();
+            for (int i = 0; i < threads.length; i++) {
+                threads[i].getThread().join();
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+
+
 
         System.out.println("********");
         System.out.println(System.currentTimeMillis() - time);
