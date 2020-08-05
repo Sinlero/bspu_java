@@ -1,10 +1,10 @@
-package DataStructures.List;
+package Task4;
 
 import java.util.Iterator;
 
-public class LinkedList implements Iterable {
+public class LinkedListOfStrings implements Iterable {
 
-    private class ListItem {
+    protected class ListItem {
         private String value;
         private ListItem next;
 
@@ -33,6 +33,12 @@ public class LinkedList implements Iterable {
     private ListItem first = null;
     private ListItem last = null;
     private int size = 0;
+
+    public LinkedListOfStrings(String... strings)  {
+        for (String string : strings) {
+            addLast(string);
+        }
+    }
 
     public void addFirst(String value) {
         if (this.isEmpty()) {
@@ -115,11 +121,11 @@ public class LinkedList implements Iterable {
     }
 
     public int getSize() {
-        return this.size;
+        return size;
     }
 
     public boolean isEmpty() {
-        return (first == null && last == null);
+        return (size == 0);
     }
 
     @Override
@@ -127,6 +133,7 @@ public class LinkedList implements Iterable {
         return new ListIterator(first);
     }
 
+    @Deprecated
     public void showData() {
         ListItem item = first;
         for (int i = 0; i < size; i++) {
