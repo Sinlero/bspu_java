@@ -43,12 +43,26 @@ public class DoublyLinkedList {
     private ListItem last;
     private int size;
 
+    @Deprecated
     public void addLast(String value) {
         if (this.isEmpty()) {
             initList(value);
+        } else {
+            ListItem item = last.getPrev();
+            ListItem insertedItem = new ListItem(value, null, last);
+            last = insertedItem;
         }
-        ListItem insertedItem = new ListItem(value, null, last);
-        last = insertedItem;
+        size++;
+    }
+
+    public void addFirst(String value) {
+        if (this.isEmpty()) {
+            initList(value);
+        } else {
+            ListItem oldFirst = first;
+            first = new ListItem(value, first, null);
+            oldFirst.setPrev(first);
+        }
         size++;
     }
 
