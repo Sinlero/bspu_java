@@ -1,38 +1,12 @@
-package Task4;
+package Task4.LinkedList;
 
 import java.util.Iterator;
 
 public class LinkedListOfStrings implements Iterable {
 
-    protected class ListItem {
-        private String value;
-        private ListItem next;
-
-        ListItem(String value, ListItem next) {
-            this.value = value;
-            this.next = next;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
-
-        public void setNext(ListItem next) {
-            this.next = next;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        public ListItem getNext() {
-            return next;
-        }
-    }
-
-    private ListItem first = null;
-    private ListItem last = null;
-    private int size = 0;
+    protected ListItem first = null;
+    protected ListItem last = null;
+    protected int size = 0;
 
     public LinkedListOfStrings(String... strings)  {
         for (String string : strings) {
@@ -44,8 +18,7 @@ public class LinkedListOfStrings implements Iterable {
         if (this.isEmpty()) {
             initList(value);
         } else {
-            ListItem item = new ListItem(value, first);
-            first = item;
+            first = new ListItem(value, first);
         }
         size++;
     }
@@ -60,15 +33,14 @@ public class LinkedListOfStrings implements Iterable {
         size++;
     }
 
-    private void initList(String value) {
+    protected void initList(String value) {
         first = last = new ListItem(value, null);
     }
 
     public String removeFirst() {
         if (!this.isEmpty()) {
             String removableValue = first.getValue();
-            ListItem current = first.getNext();
-            first = current;
+            first = first.getNext();
             if (size <= 1) {
                 last = null;
             }
@@ -144,7 +116,7 @@ public class LinkedListOfStrings implements Iterable {
 
     private class ListIterator implements Iterator {
 
-        private ListItem current = null;
+        private ListItem current;
 
         public ListIterator(ListItem item) {
             this.current = item;
