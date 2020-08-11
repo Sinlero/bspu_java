@@ -36,11 +36,34 @@ public class DoublyLinkedList extends LinkedListOfStrings {
 
     @Override
     public String removeFirst(){
-        return "";
+        if (!this.isEmpty()) {
+            DoublyListItem removable = (DoublyListItem) first;
+            first = first.getNext();
+            ((DoublyListItem) first).setPrev(null);
+            removable.setNext(null);
+            size--;
+            return removable.getValue();
+        } else {
+            return "";
+        }
     }
     
     @Override
     public String removeLast() {
+        if (!this.isEmpty()) {
+            DoublyListItem removable = (DoublyListItem) last;
+            last = ((DoublyListItem) last).getPrev();
+            last.setNext(null);
+            removable.setPrev(null);
+            size--;
+            return removable.getValue();
+        } else {
+            return "";
+        }
+    }
+
+    @Deprecated
+    private String removeItem() {
         return "";
     }
 
