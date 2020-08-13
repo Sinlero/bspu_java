@@ -89,7 +89,8 @@ public class DoublyLinkedList extends LinkedListOfStrings {
         return item.getValue();
     }
 
-    private void initList(String value) {
+    @Override
+    protected void initList(String value) {
         first = last = new DoublyListItem(value, null, null);
     }
 

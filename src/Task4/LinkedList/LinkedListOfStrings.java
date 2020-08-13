@@ -33,7 +33,7 @@ public class LinkedListOfStrings implements Iterable {
         size++;
     }
 
-    private void initList(String value) {
+    protected void initList(String value) {
         first = last = new ListItem(value, null);
     }
 
