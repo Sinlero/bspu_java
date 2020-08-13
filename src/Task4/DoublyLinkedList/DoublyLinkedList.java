@@ -75,14 +75,14 @@ public class DoublyLinkedList extends LinkedListOfStrings {
         checkOutOfBounds(index);
         int half = size / 2;
         DoublyListItem item;
-        if (index <= half) {
+        if (index < half) {
             item = (DoublyListItem) first;
             for (int i = 0; i < index; i++) {
                 item = (DoublyListItem) item.getNext();
             }
         } else {
             item = (DoublyListItem) last;
-            for (int i = size; i > index; i--) {
+            for (int i = size - 1; i > index; i--) {
                 item = item.getPrev();
             }
         }
