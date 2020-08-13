@@ -33,19 +33,19 @@ public class LinkedListOfStrings implements Iterable {
         size++;
     }
 
-    protected void initList(String value) {
+    private void initList(String value) {
         first = last = new ListItem(value, null);
     }
 
     public String removeFirst() {
         if (!this.isEmpty()) {
-            String removableValue = first.getValue();
+            ListItem removableValue = first;
             first = first.getNext();
-            if (size <= 1) {
+            if (size == 1) {
                 last = null;
             }
             size--;
-            return removableValue;
+            return removableValue.getValue();
         } else {
             return "";
         }
@@ -55,7 +55,8 @@ public class LinkedListOfStrings implements Iterable {
         if (!this.isEmpty()) {
             String removableValue = last.getValue();
             ListItem current;
-            if (size <= 1) {
+            if (size == 1) {
+                first = null;
                 last = null;
             } else {
                 current = getItem(size - 2);
@@ -70,12 +71,7 @@ public class LinkedListOfStrings implements Iterable {
 
 
     public String get(int index) {
-        checkOutOfBounds(index);
-        ListItem item = first;
-        for (int i = 0; i < index; i++) {
-            item = item.getNext();
-        }
-        return item.getValue();
+        return getItem(index).getValue();
     }
 
     private ListItem getItem(int index) {
@@ -87,7 +83,7 @@ public class LinkedListOfStrings implements Iterable {
         return current;
     }
 
-    private void checkOutOfBounds(int index) {
+    protected void checkOutOfBounds(int index) {
         if (index >= size)
             throw new IndexOutOfBoundsException();
     }

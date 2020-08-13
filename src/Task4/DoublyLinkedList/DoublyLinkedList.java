@@ -16,7 +16,7 @@ public class DoublyLinkedList extends LinkedListOfStrings {
             initList(value);
         } else {
             DoublyListItem oldLast = (DoublyListItem) last;
-            last = new DoublyListItem(value,null, (DoublyListItem) last);
+            last = new DoublyListItem(value, null, (DoublyListItem) last);
             oldLast.setNext(last);
         }
         size++;
@@ -35,26 +35,34 @@ public class DoublyLinkedList extends LinkedListOfStrings {
     }
 
     @Override
-    public String removeFirst(){
+    public String removeFirst() {
         if (!this.isEmpty()) {
             DoublyListItem removable = (DoublyListItem) first;
             first = first.getNext();
-            ((DoublyListItem) first).setPrev(null);
-            removable.setNext(null);
+            if (size == 1) {
+                last = null;
+            } else {
+                ((DoublyListItem) first).setPrev(null);
+                removable.setNext(null);
+            }
             size--;
             return removable.getValue();
         } else {
             return "";
         }
     }
-    
+
     @Override
     public String removeLast() {
         if (!this.isEmpty()) {
             DoublyListItem removable = (DoublyListItem) last;
             last = ((DoublyListItem) last).getPrev();
-            last.setNext(null);
-            removable.setPrev(null);
+            if (size == 1) {
+                first = null;
+            } else {
+                last.setNext(null);
+                removable.setPrev(null);
+            }
             size--;
             return removable.getValue();
         } else {
@@ -62,12 +70,26 @@ public class DoublyLinkedList extends LinkedListOfStrings {
         }
     }
 
-    @Deprecated
-    private String removeItem() {
-        return "";
+    @Override
+    public String get(int index) {
+        checkOutOfBounds(index);
+        int half = size / 2;
+        DoublyListItem item;
+        if (index <= half) {
+            item = (DoublyListItem) first;
+            for (int i = 0; i < index; i++) {
+                item = (DoublyListItem) item.getNext();
+            }
+        } else {
+            item = (DoublyListItem) last;
+            for (int i = size; i > index; i--) {
+                item = item.getPrev();
+            }
+        }
+        return item.getValue();
     }
 
-    public void initList(String value) {
+    private void initList(String value) {
         first = last = new DoublyListItem(value, null, null);
     }
 
