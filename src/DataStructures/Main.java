@@ -1,6 +1,6 @@
 package DataStructures;
 
-import Task4.LinkedList.*;
+import Lists.LinkedList.*;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
-package Task4.DoublyLinkedList;
+package Lists.DoublyLinkedList;
 
-import Task4.LinkedList.ListItem;
+import Lists.LinkedList.ListItem;
 
 public class DoublyListItem extends ListItem {
 

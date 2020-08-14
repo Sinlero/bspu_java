@@ -1,4 +1,4 @@
-package Task4.LinkedList;
+package Lists.LinkedList;
 
 public class ListItem {
     private String value;

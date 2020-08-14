@@ -1,4 +1,4 @@
-package Task4.LinkedList;
+package Lists.LinkedList;
 
 import java.util.Iterator;
 
@@ -99,15 +99,6 @@ public class LinkedListOfStrings implements Iterable {
     @Override
     public Iterator iterator() {
         return new ListIterator(first);
-    }
-
-    @Deprecated
-    public void showData() {
-        ListItem item = first;
-        for (int i = 0; i < size; i++) {
-            System.out.println(item.getValue());
-            item = item.getNext();
-        }
     }
 
     private class ListIterator implements Iterator {

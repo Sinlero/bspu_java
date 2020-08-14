@@ -1,6 +1,6 @@
-package Task4.DoublyLinkedList;
+package Lists.DoublyLinkedList;
 
-import Task4.LinkedList.LinkedListOfStrings;
+import Lists.LinkedList.LinkedListOfStrings;
 
 public class DoublyLinkedList extends LinkedListOfStrings {
 
