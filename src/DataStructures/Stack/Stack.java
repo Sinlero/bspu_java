@@ -1,8 +1,8 @@
 package DataStructures.Stack;
 
-public interface IntStack {
-    void push(int value);
-    int pop();
+public interface Stack<T> {
+    void push(T value);
+    T pop();
     int size();
     default void clear() {
         System.out.println("Method not realize");

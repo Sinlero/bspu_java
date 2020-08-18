@@ -1,14 +1,14 @@
 package DataStructures.Stack;
 
-public class FixedStack implements IntStack {
+public class FixedStack<T> implements Stack<T> {
     private int peack = -1;
-    private int[] data;
+    private T[] data;
 
     public FixedStack(int size) {
-        data = new int[size];
+        data =(T[]) new Object[size];
     }
 
-    public void push(int value) {
+    public void push(T value) {
         if (peack >= size() - 1) {
             System.out.println("Stack overflow");
         } else {
@@ -16,10 +16,10 @@ public class FixedStack implements IntStack {
         }
     }
 
-    public int pop() {
+    public T pop() {
         if (peack < 0) {
             System.out.println("Stack is empty");
-            return 0;
+            return null;
         } else {
             return data[peack--];
         }
@@ -32,7 +32,7 @@ public class FixedStack implements IntStack {
     @Override
     public void clear() {
         for (int i = 0; i < size(); i++) {
-            data[i] = 0;
+            data[i] = null;
         }
     }
 

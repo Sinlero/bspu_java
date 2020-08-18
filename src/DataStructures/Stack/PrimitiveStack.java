@@ -1,18 +1,18 @@
 package DataStructures.Stack;
 
-public class PrimitiveStack {
-    private final int[] items;
+public class PrimitiveStack<T> {
+    private final T[] items;
     private int peack = -1;
 
     public PrimitiveStack() {
-        items = new int[10];
+        items =(T[]) new Object[10];
     }
 
     public PrimitiveStack(int size) {
-        items = new int[size];
+        items = (T[]) new Object[size];
     }
 
-    public void push(int item) {
+    public void push(T item) {
         if (peack == items.length - 1) {
             System.out.println("Stack overflow");
         } else {
@@ -20,10 +20,10 @@ public class PrimitiveStack {
         }
     }
 
-    public int pop() {
+    public T pop() {
         if (peack < 0) {
             System.out.println("Stack is empty");
-            return 0;
+            return null;
         } else {
             return items[peack--];
         }

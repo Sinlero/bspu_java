@@ -1,17 +1,17 @@
 package DataStructures.Stack;
 
-public class DynamicStack implements IntStack {
+public class DynamicStack<T> implements Stack<T> {
     int peack;
-    int[] data;
+    T[] data;
 
     public DynamicStack(int size) {
-        data = new int[size];
+        data = (T[]) new Object[size];
         peack = -1;
     }
 
-    public void push(int value) {
+    public void push(T value) {
         if (peack >= size() - 1) {
-            int[] tmp = new int[size() * 2];
+            T[] tmp = (T[]) new Object[size() * 2];
             for (int i = 0; i < size(); i++) {
                 tmp[i] = data[i];
             }
@@ -20,10 +20,10 @@ public class DynamicStack implements IntStack {
         data[++peack] = value;
     }
 
-    public int pop() {
+    public T pop() {
         if (peack < 0) {
             System.out.println("Stack is empty");
-            return 0;
+            return null;
         } else {
             return data[peack--];
         }
@@ -35,7 +35,7 @@ public class DynamicStack implements IntStack {
 
     @Override
     public void show() {
-        for (int i = 0; i < size(); i++) {
+        for (int i = 0; i <= peack; i++) {
             System.out.println(data[i]);
         }
     }
@@ -43,7 +43,7 @@ public class DynamicStack implements IntStack {
     @Override
     public void clear() {
         for (int i = 0; i < size(); i++) {
-            data[i] = 0;
+            data[i] = null;
         }
     }
 }
