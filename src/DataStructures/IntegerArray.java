@@ -31,14 +31,6 @@ public class IntegerArray {
         return copyArray;
     }
 
-//    public void add(int index,int value) {
-//        if (index >= getSize()) {
-//            System.out.println("Index out of bounds");
-//        } else {
-//            array[index] = value;
-//        }
-//    }
-
     public int get(int index) {
         if (index >= getSize()) {
             System.out.println("Index out of bounds");
