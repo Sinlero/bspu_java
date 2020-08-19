@@ -13,14 +13,6 @@ public class ArrayListik<T> {
         public T getValue() {
             return this.value;
         }
-
-        public void setIndex(int index) {
-            this.index = index;
-        }
-
-        public int getIndex() {
-            return index;
-        }
     }
 
     private Item[] items;
@@ -36,15 +28,14 @@ public class ArrayListik<T> {
 
     public void addElem(T value) {
         if (index >= items.length) {
-            int size = items.length * 2;
-            Item[] temp = new Item[size];
+            int newSize = items.length * 2;
+            Item[] temp = new Item[newSize];
             for (int i = 0; i < index; i++) {
                 temp[i] = this.getElem(i);
             }
             items = temp;
         }
         items[index] = new Item(value);
-        items[index].setIndex(index);
         index++;
     }
 
@@ -58,7 +49,7 @@ public class ArrayListik<T> {
 
     public void show() {
         for (int i = 0; i < index; i++) {
-            System.out.println(items[i].getIndex());
+            System.out.println(items[i].getValue());
         }
     }
 }
