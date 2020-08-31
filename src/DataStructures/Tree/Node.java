@@ -1,21 +1,21 @@
 package DataStructures.Tree;
 
-public class Node<T> {
-    private T value;
+public class Node {
+    private int value;
     private Node left;
     private Node right;
 
-    public Node(Node left, T value, Node right) {
+    public Node(Node left, int value, Node right) {
         this.left = left;
         this.value = value;
         this.right = right;
     }
 
-    public T getValue() {
+    public int getValue() {
         return value;
     }
 
-    public void setValue(T value) {
+    public void setValue(int value) {
         this.value = value;
     }
 
@@ -33,5 +33,10 @@ public class Node<T> {
 
     public void setRight(Node right) {
         this.right = right;
+    }
+
+    @Override
+    public String toString(){
+        return String.valueOf(value);
     }
 }
