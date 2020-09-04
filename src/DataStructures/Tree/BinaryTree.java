@@ -41,14 +41,13 @@ public class BinaryTree {
         orderVisit(root);
     }
 
-    public void inReverseOrder(){
+    public void inReverseOrder() {
         reverseOrderVisit(root);
     }
 
     private void orderVisit(Node node) {
         if (node != null) {
             orderVisit(node.getLeft());
-            System.out.println(node.getValue());
             orderVisit(node.getRight());
         }
     }
@@ -59,5 +58,18 @@ public class BinaryTree {
             System.out.println(node.getValue());
             reverseOrderVisit(node.getLeft());
         }
+    }
+
+    public int getHeight() {
+        return Height(root);
+    }
+
+    private int Height(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        int leftSubTree = Height(node.getLeft());
+        int rightSubTree = Height(node.getRight());
+        return Math.max(leftSubTree, rightSubTree) + 1;
     }
 }
