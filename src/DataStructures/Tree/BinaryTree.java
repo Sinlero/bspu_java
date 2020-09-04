@@ -36,4 +36,28 @@ public class BinaryTree {
             current.setRight(new Node(null, value, null));
         }
     }
+
+    public void inOrder() {
+        orderVisit(root);
+    }
+
+    public void inReverseOrder(){
+        reverseOrderVisit(root);
+    }
+
+    private void orderVisit(Node node) {
+        if (node != null) {
+            orderVisit(node.getLeft());
+            System.out.println(node.getValue());
+            orderVisit(node.getRight());
+        }
+    }
+
+    private void reverseOrderVisit(Node node) {
+        if (node != null) {
+            reverseOrderVisit(node.getRight());
+            System.out.println(node.getValue());
+            reverseOrderVisit(node.getLeft());
+        }
+    }
 }
