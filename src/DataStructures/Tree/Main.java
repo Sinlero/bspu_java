@@ -8,6 +8,6 @@ public class Main {
         tree.insert(15);
         tree.insert(14);
 
-        System.out.println(tree.find(15));
+        System.out.println(tree.getHeight());
     }
 }
