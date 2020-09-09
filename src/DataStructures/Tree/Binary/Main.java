@@ -1,4 +1,4 @@
-package DataStructures.Tree;
+package DataStructures.Tree.Binary;
 
 public class Main {
     public static void main(String[] args) {
