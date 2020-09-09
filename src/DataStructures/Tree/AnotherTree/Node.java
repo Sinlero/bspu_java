@@ -1,9 +1,9 @@
 package DataStructures.Tree.AnotherTree;
 
 public class Node {
+    private int value;
     private Node brother;
     private Node child;
-    private int value;
 
     public Node(int value, Node brother, Node child) {
         this.value = value;
