@@ -5,6 +5,12 @@ public class Node {
     private Node child;
     private int value;
 
+    public Node(int value, Node brother, Node child) {
+        this.value = value;
+        this.brother = brother;
+        this.child = child;
+    }
+
     public Node getBrother() {
         return brother;
     }
