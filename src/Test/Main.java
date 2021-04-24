@@ -11,7 +11,7 @@ public class Main {
         arrayListOfStrings.addElem("Hello");
         arrayListOfStrings.addElem("Hello");
         arrayListOfStrings.addElem("Hello");
-        for (int i = 0; i < arrayListOfStrings.getSize(); i++) {
+        for (int i = 0; i < arrayListOfStrings.getSize()-1; i++) {
             System.out.println(arrayListOfStrings.getElem(i));
         }
     }
