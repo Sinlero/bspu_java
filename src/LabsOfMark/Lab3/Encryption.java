@@ -51,7 +51,7 @@ public class Encryption {
                 .replaceAll("!", "");
         int spaces = phrase.length() % key.length();
         for (int i = 0; i <= spaces; i++) {
-            phrase += " ";
+            phrase += "_";
         }
         return phrase;
     }
