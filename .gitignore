@@ -1,1 +1,6 @@
-target/*
+/target/*
+/.idea/*
+/.gitignore
+/Spotify.txt
+/text.txt
+/tracks.txt
