@@ -1,12 +1,19 @@
 package RealTimeSystems.AtomicReactor;
 
+import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Reactor {
     int level = 0;
     int max_level = 100;
     int min_level = 0;
     int setted_level = 0;
 
+    AtomicInteger tact_number = new AtomicInteger(0);
+
     boolean stopped = false;
+
+    Scanner scanner = new Scanner(System.in);
     /**
      * Поток, поднимающий стержень из реактора
      */
@@ -14,9 +21,9 @@ public class Reactor {
         public void run() {
             while (!stopped) {
                 try {
-                    sleep(1);
+                    sleep(1500);
                     level++;
-                    System.out.println("уровень повышен до " + level);
+                    System.out.println("уровень повышен до " + level + ". Номер такта = " + tact_number.incrementAndGet());
                 } catch (Exception pe) {
                     System.out.println("Error heigh: " + pe);
                 }
@@ -30,11 +37,25 @@ public class Reactor {
         public void run() {
             while (!stopped) {
                 try {
-                    sleep(1);
+                    sleep(1500);
                     level--;
-                    System.out.println("уровень понижен до " + level);
+                    System.out.println("уровень понижен до " + level  + ". Номер такта = " + tact_number.incrementAndGet());
                 } catch (Exception pe) {
                     System.out.println("Error low: " + pe);
+                }
+            }
+        }
+    };
+
+    Thread input = new Thread() {
+        public void run() {
+            while (!stopped) {
+                try {
+                    sleep(10);
+                    System.out.println("Введите устанавливаемое значение: ");
+                    level = scanner.nextInt();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }
@@ -47,11 +68,7 @@ public class Reactor {
         public void run() {
             while (!stopped) {
                 try {
-                    sleep(1);
-                    if (level <= setted_level -5 || level >= setted_level + 5) {
-                        level = setted_level;
-                        System.out.println("Корректирую рабочее значение до " + level);
-                    }
+                    sleep(1500);
                     if (level >= max_level) {
                         System.out.println("Реактор заглох... уровень " + level);
                         stopped = true;
@@ -82,10 +99,12 @@ public class Reactor {
         control.setPriority(Thread.NORM_PRIORITY);    //NORM_PRIORITY MIN_PRIORITY
         low.setPriority(Thread.NORM_PRIORITY);
         heigh.setPriority(Thread.NORM_PRIORITY);
+        input.setPriority(Thread.NORM_PRIORITY);
 
         control.start();
         heigh.start();
         low.start();
+        input.start();
     }
 
     /**
